@@ -8,6 +8,14 @@ function setConfig(_conf){
 }
 
 function postItems(kind, items){
+	return enqueue(postThisJson, kind, items);
+}
+
+function deleteItems(kind, items){
+	return enqueue(deleteItem, kind, items);
+}
+
+function enqueue(fn, kind, items){
 
 	var deferred = Q.defer();
 
@@ -23,9 +31,12 @@ function postItems(kind, items){
 
 			(function(p){ 
 				
-				postThisJson( item , kind, function(result){
+				fn( item , kind, function(result){
 					deferred.notify(result);
 					currents--;
+					if(items.length == 0 && currents ==0){
+						deferred.resolve();			
+					}
 				} );
 
 			})(item);
@@ -34,8 +45,6 @@ function postItems(kind, items){
 
 		if(items.length > 0){
 		    setTimeout(goNext, 100);
-		}else{
-			deferred.resolve();
 		}
 
 	}
@@ -43,7 +52,6 @@ function postItems(kind, items){
 	goNext();
 
 	return deferred.promise;
-
 }
 
 function postThisJson(objToPost, api, cb){
@@ -100,6 +108,54 @@ function postThisJson(objToPost, api, cb){
 
 }
 
+function deleteItem(id, api, cb){
+
+	// api can be one of ( persons, organizations, memberships, posts );
+
+	var user = config.user;
+	var pwd = config.password;
+
+	var headers = {
+	  'Authorization': 'Basic ' + new Buffer(user + ':' + pwd).toString('base64'),
+	  'Content-Type': 'application/json',
+	  'Content-Length': '0'
+	};
+
+	var options = {
+	  host: config.host,
+	  port: 80,
+	  path: '/api/v0.1/' + api + "/" + id,
+	  method: 'DELETE',
+	  headers: headers
+	};
+
+	// Setup the request.  The options parameter is
+	// the object we defined above.
+	var req = http.request(options, function(res) {
+	  res.setEncoding('utf-8');
+
+	  var responseString = '';
+
+	  res.on('data', function(data) {
+	    responseString += data;
+	  });
+
+	  res.on('end', function() {
+
+	    if(typeof cb == "function"){
+	    	cb(responseString);
+	    }
+
+	  });
+	});
+
+	req.on('error', function(e) {
+	  // TODO: handle error.
+	  console.log("ERROR", e);
+	});
+
+	req.end();
+}
 
 function getJson(path){
 
@@ -202,5 +258,6 @@ function loadAllItems(type){
 module.exports = {
 	loadAllItems: loadAllItems,
 	postItems: postItems, 
+	deleteItems: deleteItems,
 	config: setConfig
 };
