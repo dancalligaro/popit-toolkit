@@ -1,6 +1,6 @@
 {
   "name": "popit-toolkit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Toolkit for populating your PopIt instance",
   "main": "index.js",
   "scripts": {
