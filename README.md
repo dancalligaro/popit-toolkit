@@ -1,9 +1,11 @@
-Popit Toolkit
+PopIt Toolkit
 =============
 
-Utility library for populating your Popit instance.
+Utility library for populating your PopIt instance.
 
-This node module contains some functions used to interact with Popit instances.
+What is PopIt? [Check the PopIt site](http://popit.poplus.org/) 
+
+This node module contains some functions used to interact with PopIt instances.
 
 In particular, it provides a way for inserting large sets of items and also getting all the items in any one of the collections. 
 
