@@ -10,10 +10,12 @@ In particular, it provides a way for inserting large sets of items and also gett
 Installation
 ------------
 
-npm install popit-toolkit
+`npm install popit-toolkit`
 
 Usage
 -----
+
+```javascript
 
 var toolkit = require('popit-toolkit');
 
@@ -32,6 +34,7 @@ var itemsToPost = [];
 
 itemsToPost.push({ name : "Organization 1" });
 itemsToPost.push({ name : "Organization 2" });
+
 
 toolkit.postItems('organizations', itemsToPost).then(
 	function(){
@@ -58,4 +61,6 @@ toolkit.loadAllItems('persons').then(function(persons){
 	console.log(progress); //This will bring information about the number of 'pages' that will be retrieved to get the complete collection.
 });
 
+
+```
 
