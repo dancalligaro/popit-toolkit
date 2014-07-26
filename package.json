@@ -1,7 +1,7 @@
 {
   "name": "popit-toolkit",
   "version": "0.0.1",
-  "description": "Toolkit for populating your Popit instance",
+  "description": "Toolkit for populating your PopIt instance",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
