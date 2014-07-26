@@ -35,7 +35,6 @@ var itemsToPost = [];
 itemsToPost.push({ name : "Organization 1" });
 itemsToPost.push({ name : "Organization 2" });
 
-
 toolkit.postItems('organizations', itemsToPost).then(
 	function(){
 		console.log('all requests POSTed to the server');
@@ -50,16 +49,19 @@ toolkit.postItems('organizations', itemsToPost).then(
 );
 
 
+// To get all the items in the persons collection
 
-// To get all the persons
-
-toolkit.loadAllItems('persons').then(function(persons){ 
-	console.log('total persons', persons.length)
-}, function(err){
-	console.log('error', err);
-}, function(progress){
-	console.log(progress); //This will bring information about the number of 'pages' that will be retrieved to get the complete collection.
-});
+toolkit.loadAllItems('persons').then(
+	function(persons){ 
+		console.log('total persons', persons.length)
+	}, 
+	function(err){
+		console.log('error', err);
+	}, 
+	function(progress){
+		console.log(progress); //This will bring information about the number of 'pages' that will be retrieved to get the complete collection.
+	}
+);
 
 
 ```
