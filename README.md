@@ -19,11 +19,11 @@ Usage
 
 ```javascript
 
-var toolkit = require('popit-toolkit');
+var Toolkit = require('popit-toolkit');
 
-// Set initial values & config
+// Get toolkit instance and set config values:
 
-toolkit.config({
+var toolkit = Toolkit({
 	host: 'cargografias.popit.mysociety.org', 
 	user: 'username',       // optional if not going to write to the api
 	password: 'password'    // optional if not going to write to the api
@@ -81,7 +81,7 @@ Function Reference
 
 .config(configOptions)
 
-This method initializes the library and sets the credentials that will be used for writing to the API.
+This method updates the config values for the instance of the toolkit.
 
 ```javascript
 configOptions = {
