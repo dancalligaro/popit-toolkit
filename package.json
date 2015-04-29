@@ -1,6 +1,6 @@
 {
   "name": "popit-toolkit",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Toolkit for populating your PopIt instance and also retrieving its collections quickly.",
   "main": "index.js",
   "scripts": {

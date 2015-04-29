@@ -58,13 +58,10 @@ function createInstance(config) {
 
     // api can be one of ( persons, organizations, memberships, posts );
 
-    var user = config.user;
-    var pwd = config.password;
-
     var postString = JSON.stringify(objToPost);
 
     var headers = {
-      'Authorization': 'Basic ' + new Buffer(user + ':' + pwd).toString('base64'),
+      'Apikey': config.Apikey,
       'Content-Type': 'application/json',
       'Content-Length': Buffer.byteLength(postString)
     };
@@ -112,11 +109,8 @@ function createInstance(config) {
 
     // api can be one of ( persons, organizations, memberships, posts );
 
-    var user = config.user;
-    var pwd = config.password;
-
     var headers = {
-      'Authorization': 'Basic ' + new Buffer(user + ':' + pwd).toString('base64'),
+      'Apikey': config.Apikey,
       'Content-Type': 'application/json',
       'Content-Length': '0'
     };

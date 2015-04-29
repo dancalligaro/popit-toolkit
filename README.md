@@ -25,8 +25,7 @@ var Toolkit = require('popit-toolkit');
 
 var toolkit = Toolkit({
 	host: 'cargografias.popit.mysociety.org', 
-	user: 'username',       // optional if not going to write to the api
-	password: 'password'    // optional if not going to write to the api
+	Apikey: 'yourInstanceApiKey'       // optional if not going to write to the api
 });
 
 
@@ -86,8 +85,7 @@ This method updates the config values for the instance of the toolkit.
 ```javascript
 configOptions = {
 	host: 'cargografias.popit.mysociety.org', 
-	user: 'username',       // optional if not going to write to the api
-	password: 'password'    // optional if not going to write to the api	
+	Apikey: 'yourInstanceApiKey'       // optional if not going to write to the api
 }
 ```
 
