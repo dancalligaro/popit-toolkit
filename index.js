@@ -45,6 +45,8 @@ function createInstance(config) {
 
       if (items.length > 0) {
         setTimeout(goNext, 100);
+      }else if(items.length == 0 && currents == 0) {
+        deferred.resolve();
       }
 
     }
